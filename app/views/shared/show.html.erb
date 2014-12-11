@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @text.title %><small>by <%= @text.author.name %></small></h2>
+
+<% if @text.class == Poem %>
+  "<%= @text.metaphor %>"
+<% else %>
+  <i><%= @text.short_description %></i>
+<% end %>
+
+<p><%= @text.content %></p>
+
+<p>Tags: <%= @text.tag_list %></p>

@@ -1,5 +1,6 @@
 class ShortStoriesController < ApplicationController
   before_action :set_short_story, only: [:show, :edit, :update, :destroy]
+  before_action :author_signed_in?, except: [:index, :show]
 
   # GET /short_stories
   # GET /short_stories.json
@@ -28,7 +29,7 @@ class ShortStoriesController < ApplicationController
 
     respond_to do |format|
       if @short_story.save
-        format.html { redirect_to @short_story, notice: 'Short story was successfully created.' }
+        format.html { redirect_to show_text_path('short_story', @short_story.id), notice: 'Short story was successfully created.' }
         format.json { render :show, status: :created, location: @short_story }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class ShortStoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def short_story_params
-      params[:short_story]
+      params.require(:short_story).permit(:title, :content, :metaphor, :author_id, :tag_list)
     end
 end

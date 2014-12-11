@@ -1,4 +1,5 @@
 class ShortStory < ActiveRecord::Base
+  include TagConcern
   
   belongs_to :author
 

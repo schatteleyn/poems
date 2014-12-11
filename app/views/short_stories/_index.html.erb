@@ -10,7 +10,9 @@
   <tbody>
     <% @short_stories.each do |short_story| %>
       <tr>
-        <td><%= link_to 'Show', short_story %></td>
+        <td><%= link_to short_story.title, short_story %><br />
+	    <%= short_story.short_description %>
+        </td>
         <td><%= link_to 'Edit', edit_short_story_path(short_story) %></td>
         <td><%= link_to 'Destroy', short_story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

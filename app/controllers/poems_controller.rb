@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
   before_action :set_poem, only: [:show, :edit, :update, :destroy]
+  before_action :author_signed_in?, except: [:index, :show]
 
   # GET /poems
   # GET /poems.json
@@ -28,7 +29,7 @@ class PoemsController < ApplicationController
 
     respond_to do |format|
       if @poem.save
-        format.html { redirect_to @poem, notice: 'Poem was successfully created.' }
+        format.html { redirect_to show_text_path('poem', @poem.id), notice: 'Poem was successfully created.' }
         format.json { render :show, status: :created, location: @poem }
       else
         format.html { render :new }
@@ -69,6 +70,6 @@ class PoemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poem_params
-      params[:poem]
+      params.require(:poem).permit(:title, :content, :metaphor, :author_id, :tag_list)
     end
 end

@@ -1,11 +1,12 @@
 class Author < ActiveRecord::Base
+  include TagConcern
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :poems
-  has_many :short_storys
+  has_many :short_stories
 
-  validates :name, :email, presence: :true, uniqueness: :true
+  validates :email, presence: :true, uniqueness: :true
 end
