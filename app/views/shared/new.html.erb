@@ -1,3 +1,13 @@
-<%= render 'poems/form' %>
+<ul id="myTab" class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#new_poem" aria-controls="new_poem" role="tab" data-toggle="tab">Poem</a></li>
+  <li role="presentation"><a href="#new_short_story" aria-controls="new_short_story" role="tab" data-toggle="tab">Short story</a></li>
+</ul>
 
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="new_poem">
+    <%= render 'poems/form' %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="new_short_story">
 <%= render 'short_stories/form' %>
+  </div>
+</div>

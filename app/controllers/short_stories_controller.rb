@@ -5,7 +5,6 @@ class ShortStoriesController < ApplicationController
   # GET /short_stories
   # GET /short_stories.json
   def index
-    @short_stories = ShortStory.all
   end
 
   # GET /short_stories/1
@@ -57,7 +56,7 @@ class ShortStoriesController < ApplicationController
   def destroy
     @short_story.destroy
     respond_to do |format|
-      format.html { redirect_to short_stories_url, notice: 'Short story was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Short story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +69,6 @@ class ShortStoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def short_story_params
-      params.require(:short_story).permit(:title, :content, :metaphor, :author_id, :tag_list)
+      params.require(:short_story).permit(:title, :content, :short_description, :author_id, :tag_list)
     end
 end

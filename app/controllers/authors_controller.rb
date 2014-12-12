@@ -1,15 +1,17 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
-
+  before_action :author_signed_in?, only: [:edit, :update, :destroy]
+  
   # GET /authors
   # GET /authors.json
   def index
-    @authors = Author.all
   end
 
   # GET /authors/1
   # GET /authors/1.json
   def show
+    @poems = @author.poems
+    @short_stories = @author.short_stories
   end
 
   # GET /authors/new
@@ -69,6 +71,6 @@ class AuthorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
-      params.require(:author).permit(:name, :tag_list)
+      params.require(:author).permit(:name, :biography, :tag_list)
     end
 end

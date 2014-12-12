@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<%= unless @poems.empty? 
+      render 'poems/index'
+    end %>
 
-<%= link_to 'Edit', edit_author_path(@author) %> |
-<%= link_to 'Back', authors_path %>
+
+<%= unless @short_stories.empty? 
+      render 'short_stories/index' 
+    end %>
+

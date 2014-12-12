@@ -1,3 +1,16 @@
-<%= render 'poems/index' %>
+<% if params[:tag] %>
+  Text for "<%= params[:tag] %>" tag
+<% end %>
 
-<%= render 'short_stories/index' %>
+<%= unless @poems.empty? 
+      render 'poems/index'
+    end %>
+
+
+<%= unless @short_stories.empty? 
+      render 'short_stories/index' 
+    end %>
+
+<%= unless @authors.empty?
+      render 'authors/index' 
+    end %>

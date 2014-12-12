@@ -3,6 +3,8 @@ class Poem < ActiveRecord::Base
 
   acts_as_taggable
 
+  paginates_per 10
+
   belongs_to :author
 
   validates :title, :content, :metaphor, presence: true

@@ -1,0 +1,14 @@
+<% unless @poems.empty? %>
+  $('tbody#poems').html('<%= escape_javascript render(@poems) %>');
+  $('#paginator_poem').html('<%= escape_javascript(paginate(@poems, :param_name => :page_poems,:remote => true).to_s) %>');
+<% end %>
+
+<% unless @poems.empty? %>
+  $('tbody#short_stories').html('<%= escape_javascript render(@short_stories) %>');
+  $('#paginator_short_story').html('<%= escape_javascript(paginate(@short_stories, :param_name => :page_stories, :remote => true).to_s) %>');
+<% end %>
+
+<% unless @authors.empty? %>
+  $('tbody#authors').html('<%= escape_javascript render(@authors) %>');
+  $('#paginator_author').html('<%= escape_javascript(paginate(@authors, :param_name => :page_authors, :remote => true).to_s) %>');
+<% end %>
