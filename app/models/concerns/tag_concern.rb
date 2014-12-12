@@ -18,12 +18,12 @@ module TagConcern
     tag_list = ActsAsTaggableOn::Tag.all.map(&:name)
     to_add_tags = []
 
-    tag_list.any? do |tag| 
+    tag_list.collect do |tag| 
       if text.include? tag 
         to_add_tags << tag
       end
     end
 
-    self.tag_list.add(to_add_tags.join(", ")) unless to_add_tags.nil?
+    self.tag_list.add(to_add_tags) unless to_add_tags.nil?
   end
 end

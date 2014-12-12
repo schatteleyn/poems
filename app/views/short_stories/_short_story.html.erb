@@ -1,0 +1,11 @@
+    <% @short_stories.each do |short_story| %>
+      <tr>
+        <td><%= link_to short_story.title, show_text_path('short_story', short_story.id) %><br />
+	    <%= short_story.short_description %>
+        </td>
+        <% if author_signed_in? && current_author ==  short_story.author %>
+          <td><%= link_to 'Edit', edit_short_story_path(short_story) %></td>
+          <td><%= link_to 'Destroy', short_story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>

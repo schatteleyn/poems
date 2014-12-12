@@ -7,19 +7,10 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @poems.each do |poem| %>
-      <tr>
-        <td><%= link_to poem.title, poem %><br />
-	    <%= poem.metaphor %>
-        </td>
-        <td><%= link_to 'Edit', edit_poem_path(poem) %></td>
-        <td><%= link_to 'Destroy', poem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody id="poems">
+    <%= render @poems %>
   </tbody>
+    <div id="paginator_poem">
+      <%= paginate @poems, :param_name => :page_poems, :remote => true %>
+    </div>
 </table>
-
-<br>
-
-<%= link_to 'New Poem', new_poem_path %>

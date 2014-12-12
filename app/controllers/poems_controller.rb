@@ -5,7 +5,6 @@ class PoemsController < ApplicationController
   # GET /poems
   # GET /poems.json
   def index
-    @poems = Poem.all
   end
 
   # GET /poems/1
@@ -43,7 +42,7 @@ class PoemsController < ApplicationController
   def update
     respond_to do |format|
       if @poem.update(poem_params)
-        format.html { redirect_to @poem, notice: 'Poem was successfully updated.' }
+        format.html { redirect_to show_text_path('poem', @poem.id), notice: 'Poem was successfully updated.' }
         format.json { render :show, status: :ok, location: @poem }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class PoemsController < ApplicationController
   def destroy
     @poem.destroy
     respond_to do |format|
-      format.html { redirect_to poems_url, notice: 'Poem was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Poem was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

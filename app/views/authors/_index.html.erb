@@ -1,0 +1,16 @@
+<h1>Listing authors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="authors">
+    <%= render @authors %>
+  </tbody>
+  <div id="paginator_author">
+    <%= paginate @authors, :param_name => :page_authors, :remote => true %>
+  </div>
+</table>

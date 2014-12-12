@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @text.title %><small>by <%= @text.author.name %></small></h2>
+<h2><%= @text.title %><small> by <%= @text.author.name %></small></h2>
 
 <% if @text.class == Poem %>
   "<%= @text.metaphor %>"
@@ -8,6 +8,6 @@
   <i><%= @text.short_description %></i>
 <% end %>
 
-<p><%= @text.content %></p>
+<p><%= simple_format @text.content %></p>
 
-<p>Tags: <%= @text.tag_list %></p>
+<p>Tags: <%= raw @text.tag_list.map { |t| link_to t, root_path( tag: t)}.join(', ') %></p>

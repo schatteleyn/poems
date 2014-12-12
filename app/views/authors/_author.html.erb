@@ -1,0 +1,6 @@
+    <% @authors.each do |author| %>
+      <tr>
+	<td><%= author.name %></td>
+        <td><%= link_to "Show author's text", author %></td>
+      </tr>
+    <% end %>
