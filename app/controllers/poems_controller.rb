@@ -43,7 +43,7 @@ class PoemsController < ApplicationController
   def update
     respond_to do |format|
       if @poem.update(poem_params)
-        format.html { redirect_to @poem, notice: 'Poem was successfully updated.' }
+        format.html { redirect_to show_text_path('poem', @poem.id), notice: 'Poem was successfully updated.' }
         format.json { render :show, status: :ok, location: @poem }
       else
         format.html { render :edit }

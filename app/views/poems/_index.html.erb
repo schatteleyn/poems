@@ -7,19 +7,17 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="poems">
     <% @poems.each do |poem| %>
       <tr>
-        <td><%= link_to poem.title, poem %><br />
+        <td><%= link_to poem.title, show_text_path('poem', poem.id) %><br />
 	    <%= poem.metaphor %>
         </td>
-        <td><%= link_to 'Edit', edit_poem_path(poem) %></td>
-        <td><%= link_to 'Destroy', poem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if author_signed_in? && current_author ==  poem.author %>
+          <td><%= link_to 'Edit', edit_poem_path(poem) %></td>
+          <td><%= link_to 'Destroy', poem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Poem', new_poem_path %>

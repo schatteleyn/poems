@@ -43,7 +43,7 @@ class ShortStoriesController < ApplicationController
   def update
     respond_to do |format|
       if @short_story.update(short_story_params)
-        format.html { redirect_to @short_story, notice: 'Short story was successfully updated.' }
+        format.html { redirect_to show_text_path('short_story', @short_story.id), notice: 'Short story was successfully updated.' }
         format.json { render :show, status: :ok, location: @short_story }
       else
         format.html { render :edit }
