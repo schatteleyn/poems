@@ -1,7 +1,4 @@
-# Pagination for [Twitter Bootstrap 3](http://getbootstrap.com/components/#pagination)
+Instructions:  
 
-With support for:
-
-- erb
-- haml
-- slim
+bundle install
+rake db:setup
